@@ -1,0 +1,41 @@
+# Virtual environment
+venv/
+
+# Configuration files
+config.ini
+
+# Log files
+*.log
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
+# Environment variables
+.env
+
+# Google Service Account Credentials
+gothic-client-442512-b4-0debe60579e9.json
+*.json
+
+# Other files or directories to ignore
+*.key
+*.pem
+
+# Ignore everything else in home directory
+.aws/
+.bash_history
+.bash_logout
+.bash_profile
+.bashrc
+.gitconfig
+.lesshst
+.local/
+.psql_history
+.ssh/
+.viminfo
+.wget-hsts
+pgadmin4-fedora-repo-2-1.noarch.rpm.1
+pgadmin4-fedora-repo-2-1.noarch.rpm.2
