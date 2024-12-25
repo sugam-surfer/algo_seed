@@ -12,7 +12,7 @@ sys.path.append(str(parent_dir))
 from logger import setup_logger
 from db_utils import get_db_connection
 
-threshold_ratio = 0.95  # Configurable threshold for ticker availability
+threshold_ratio = 0.9  # Configurable threshold for ticker availability
 
 default_process_days = 60  # Configurable: Number of days to process for an existing table
 historical_process_days = 999999  # Configurable: Number of days to process for a new table
@@ -25,6 +25,12 @@ def parse_arguments():
         required=True,
         help="The input table name in the format 'stg_algo_seed_<n_value>'"
     )
+    parser.add_argument(
+        "--process_latest",
+        type=lambda x: x.lower() == 'true',
+        default=True,
+        help="Whether to process the latest data (default: True). If False, processes historical data."
+    )
     args = parser.parse_args()
 
     # Extract n_value from the input table and derive the output table name
@@ -34,7 +40,7 @@ def parse_arguments():
     n_value = args.input_table.split("_")[-1]  # Extract <n_value> from input table
     output_table = f"rank_algo_seed_{n_value}"  # Construct output table name
 
-    return args.input_table, output_table, n_value
+    return args.input_table, output_table, n_value, args.process_latest
 
 
 def get_dynamic_columns(n_value):
@@ -391,7 +397,7 @@ def main():
     Main function to execute the rank_algo_seed process.
     """
     # Step 1: Parse arguments
-    input_table, output_table, n_value = parse_arguments()
+    input_table, output_table, n_value, process_latest = parse_arguments()
     dynamic_columns = get_dynamic_columns(n_value)
 
     # Set up logger
@@ -408,7 +414,14 @@ def main():
             table_exists = create_dynamic_table(connection, output_table, dynamic_columns, logger)
 
             # Step 3: Fetch trade dates
-            process_last_n_days = default_process_days if table_exists else historical_process_days  # Process all historical data for a new table
+            if process_latest:
+                if table_exists:
+                    process_last_n_days = default_process_days
+                else:
+                    process_last_n_days = historical_process_days
+            else:
+                process_last_n_days = historical_process_days
+
             trade_dates = fetch_trade_dates(connection, input_table, process_last_n_days, logger)
 
             # Step 4: Process data for each trade_date
