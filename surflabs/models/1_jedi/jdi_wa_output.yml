@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: jdi_wa_output
+    description: '{{ doc("jdi_wa_output") }}'
+    columns:
+
+      - name: id
+        description: >
+            The unique identifier for the withdrawal request.
+
+      - name: ident_value
+        description: >
+            The unique identifier for the user (wallet address created when the user logs in via Web3Auth).
+
+      - name: user_id
+        description: >
+            The unique identifier for the user.
+
+      - name: friendly_name
+        description: >
+            The social login email address associated with the user.
+
+      - name: nominated_address
+        description: >
+            The wallet address nominated for withdrawals by the user.
+
+      - name: app_id
+        description: >
+            The unique identifier for the app.
+
+      - name: currency
+        description: >
+            The currency of the withdrawal request.
+
+      - name: amount
+        description: >
+            The amount of the withdrawal request.
+
+      - name: created_at
+        description: >
+            The timestamp when the withdrawal request was created.
+
+      - name: status
+        description: >
+            The final status of the withdrawal request (approve, confiscate, reject).
+
+      - name: reason
+        description: >
+            The reason for the final status of the withdrawal request.

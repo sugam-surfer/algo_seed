@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: jdi_wa_avg_usergames
+    description: '{{ doc("jdi_wa_avg_usergames") }}'
+
+    columns:
+
+      - name: app_id
+        description: >
+            Unique id of the app.
+
+      - name: user_id
+        description: >
+            Unique id of the user.
+
+      - name: games_per_day
+        description: >
+            The average number of games played per day by the user within the specified lookback period.

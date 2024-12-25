@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: raw_companies
+    description: '{{ doc("raw_companies") }}'
+
+    columns:
+
+      - name: company_id
+        description: >
+            Unique identifier for each company.
+
+      - name: company_name
+        description: >
+            Name of the company.
+
+      - name: company_dev_api_key
+        description: >
+            Development API key associated with the company.
+
+      - name: company_created_at
+        description: >
+            Timestamp indicating when the company entry was created.
+
+      - name: company_updated_at
+        description: >
+            Timestamp indicating when the company entry was last updated.

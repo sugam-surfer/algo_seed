@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: jdi_wa_approvals
+    description: '{{ doc("jdi_wa_approvals") }}'
+    columns:
+
+      - name: id
+        description: >
+            The unique identifier for the withdrawal request.
+
+      - name: ident_value
+        description: >
+            The unique identifier for the user (wallet address created when the user logs in via Web3Auth).
+
+      - name: user_id
+        description: >
+            The unique identifier for the user.
+
+      - name: nominated_address
+        description: >
+            The wallet address nominated for withdrawals by the user.
+
+      - name: app_id
+        description: >
+            The unique identifier for the app.
+
+      - name: currency
+        description: >
+            The currency of the withdrawal request.
+
+      - name: amount
+        description: >
+            The amount of the withdrawal request.
+
+      - name: ex_value
+        description: >
+            The USD value of the withdrawal request.
+
+      - name: created_at
+        description: >
+            The timestamp when the withdrawal request was created.
+
+      - name: win_rate
+        description: >
+            The win rate of the user associated with the withdrawal request.
+
+      - name: prio_score
+        description: >
+            The priority score assigned to the withdrawal request.
+
+      - name: approval_ranking
+        description: >
+            The approval ranking of the withdrawal request based on its priority score and user's win rate.
+
+      - name: cum_sum
+        description: >
+            The cumulative sum of exchange values for the withdrawal requests, partitioned by app id and ordered by approval ranking.
+
+      - name: budget_left
+        description: >
+            The remaining budget for withdrawals for the app and the day.
+
+      - name: status
+        description: >
+            The approval status of the withdrawal request based on daily budget (approve or waitlist).
+
+      - name: reason
+        description: >
+            The reason for the approval status of the withdrawal request.

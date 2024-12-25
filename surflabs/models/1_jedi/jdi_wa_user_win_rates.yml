@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: jdi_wa_user_win_rates
+    description: '{{ doc("jdi_wa_user_win_rates") }}'
+
+    columns:
+
+      - name: app_id
+        description: >
+            Unique id of the app.
+
+      - name: user_id
+        description: >
+            Unique id of the user.
+
+      - name: game_type
+        description: >
+            The type of game, categorized as either "soft" or "hard".
+
+      - name: is_fake
+        description: >
+            Indicates whether the game is a "fake" game or a normal game. Fake games occur when a user plays against themselves, typically during the first few games of the user.
+
+      - name: total_games
+        description: >
+            The total number of games played by the user.
+
+      - name: winning_games
+        description: >
+            The total number of games won by the user.
+
+      - name: win_rate
+        description: >
+            The win rate calculated as the ratio of winning games to total games played by the user.

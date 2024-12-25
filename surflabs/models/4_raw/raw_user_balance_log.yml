@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: raw_user_balance_log
+    description: '{{ doc("raw_user_balance_log") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each balance change entry.
+
+      - name: user_id
+        description: >
+            Unique identifier of the user.
+
+      - name: currency
+        description: >
+            Currency affected by the balance change.
+
+      - name: change
+        description: >
+            Amount of currency changed. Positive values indicate an increase, while negative values denote a decrease.
+
+      - name: reason
+        description: >
+            Reason for the balance change, providing context for the modification. Possible reasons include:
+              d_reward: Daily reward
+              entry_fee: Entry fee
+              entry_fee_bonus_hc: Entry fee with bonus hard currency
+              entry_fee_hc: Entry fee with hard currency
+              entry_fee_sc: Entry fee with soft currency
+              hc_deposit: Hard currency deposit
+              hc_deposit_bonus: Bonus reward with hard currency deposit
+              hc_withdraw: Hard currency withdrawal
+              hc_withdraw_refund: Hard currency withdrawal refund upon rejection
+              indigg_hc: indiGG hard currency reward
+              indigg_sc: indiGG soft currency reward
+              initial_sc: Initial soft currency
+              leaderboard: Leaderboard reward
+              level_up: Level up reward
+              refund_bonus_hc: Entry fee refund with bonus hard currency
+              refund_hc: Entry fee refund with hard currency
+              refund_sc: Entry fee refund with soft currency
+              social_hc: Social login hard currency reward
+              web3_hc: Web3 login hard currency reward
+              win: Winning reward
+              win_bonus_hc: Winning reward with bonus hard currency
+              win_hc: Winning reward with hard currency
+              win_sc: Winning reward with soft currency
+
+      - name: txn_id
+        description: >
+            Starting from March 13, 2024, the txn_id column contains game_room.id values for specific reasons: entry_fee_sc, entry_fee_hc, entry_fee_bonus_hc, refund_sc, refund_hc, refund_bonus_hc, win_sc, win_hc, win_bonus_hc
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the balance change entry was created.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the balance change entry was inserted into the database.

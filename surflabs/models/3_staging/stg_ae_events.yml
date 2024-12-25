@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: stg_ae_events
+    description: '{{ doc("stg_ae_events") }}'
+
+    columns:
+      - name: app_id
+        description: >
+            Unique identifier of the app.
+
+      - name: ts
+        description: >
+            Timestamp indicating when the event occurred.
+
+      - name: sdk_replay_id
+        description: >
+            Unique identifier for the event instance.
+
+      - name: user_id
+        description: >
+            The unique identifier of the user.
+
+      - name: os
+        description: >
+            Operating system of the device. 1: Android, 2: iOS, otherwise Web
+
+      - name: city
+        description: >
+            Two-character abbreviation of the city.
+
+      - name: event_name
+        description: >
+            Name of the event, though not all events are stored here as they are filtered.
+
+      - name: device_token
+        description: >
+            Unique token associated with the device from which the event originated.
+
+      - name: session_id
+        description: >
+            Unique identifier for the session associated with the event.
+
+      - name: wallet_addr
+        description: >
+            Wallet address associated with the event.
+
+      - name: event_data
+        description: >
+            JSON object containing additional event data.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the event entry was inserted into the database.

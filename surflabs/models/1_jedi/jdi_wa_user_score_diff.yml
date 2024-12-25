@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: jdi_wa_user_score_diff
+    description: '{{ doc("jdi_wa_user_score_diff") }}'
+
+    columns:
+      - name: app_id
+        description: >
+            Unique identifier of the app.
+
+      - name: game_type
+        description: >
+            The type of game being played, categorized as either "soft" or "hard".
+
+      - name: or_entry_fee_amount
+        description: >
+            The entry fee amount for the game in USD.
+
+      - name: match_id
+        description: >
+            The unique identifier for the game match.
+
+      - name: user_id
+        description: >
+            The unique identifier for the user.
+
+      - name: score
+        description: >
+            The score achieved by the user in the match.
+
+      - name: score_difference
+        description: >
+            The difference between the highest and lowest scores in the match, indicating the spread of scores among participants. All matches in this table have abnormal score differences.

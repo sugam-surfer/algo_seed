@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: raw_exchange_rate
+    description: '{{ doc("raw_exchange_rate") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each exchange rate entry.
+
+      - name: base
+        description: >
+            Specifies the base currency for the exchange rate.
+
+      - name: target
+        description: >
+             Specifies the target currency for the exchange rate.
+
+      - name: rate_open
+        description: >
+             Opening exchange rate between the base and target currencies.
+
+      - name: rate_high
+        description: >
+            Highest exchange rate observed during the interval.
+
+      - name: rate_low
+        description: >
+            Lowest exchange rate observed during the interval.
+
+      - name: rate_close
+        description: >
+            Closing exchange rate between the base and target currencies.
+
+      - name: scraped_at
+        description: >
+            Timestamp indicating when the exchange rate data was scraped or retrieved.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the exchange rate entry was created.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the exchange rate entry was inserted into the database.
+            

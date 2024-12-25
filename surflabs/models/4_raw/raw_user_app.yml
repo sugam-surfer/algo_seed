@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: raw_user_app
+    description: '{{ doc("raw_user_app") }}'
+
+    columns:
+      - name: user_id
+        description: >
+            Unique identifier for each user.
+
+      - name: app_id
+        description: >
+            Identifier for the app.
+
+      - name: hard_currency
+        description: >
+            Currently active hard currency for the user in the specified app.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the entry was last updated.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the entry was inserted into the database.
+

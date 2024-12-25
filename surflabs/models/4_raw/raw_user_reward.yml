@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: raw_user_reward
+    description: '{{ doc("raw_user_reward") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each reward entry.
+
+      - name: app_id
+        description: >
+            Identifier for the application associated with the reward.
+
+      - name: user_id
+        description: >
+            Unique identifier for the user receiving the reward.
+      
+      - name: reward
+        description: >
+            Amount of the reward.
+
+      - name: currency
+        description: >
+            Currency associated with the reward.
+
+      - name: type
+        description: >
+            Numeric value indicating the type of reward:
+              1: Play reward (not used)
+              2: Level up reward
+              3: Daily reward
+              4: Leaderboard reward
+              5: Signup bonus
+
+      - name: claimed
+        description: >
+            Numeric indicator (1 for claimed, 0 for not claimed) specifying whether the reward has been claimed by the user.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the reward entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the reward entry was last updated.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the reward entry was inserted into the table.

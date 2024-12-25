@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: stg_user
+    description: '{{ doc("stg_user") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each user.
+
+      - name: company_id
+        description: >
+            Identifier for the company associated with each user. Each company ID corresponds to one app ID.
+
+      - name: pass
+        description: >
+            Randomly generated value serving as a user identifier. Note: These values are not actual passwords.
+      
+      - name: last_login
+        description: >
+            Timestamp indicating the date and time of the user's last login.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the user record was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the user record was last updated.
+
+      - name: flags
+        description: >
+            Bitmask column indicating additional user attributes. Defaults to 0 and is set to 1 if the user received a sign-up bonus.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the entry was inserted into the database.
+
+      - name: af_status
+        description: >
+            Indicates whether the user attribution is organic or non-organic as obtained from Appsflyer. If this field is null or empty, it is classified as "Undefined".
+
+      - name: af_channel
+        description: >
+            Represents the channel associated with non-organic user attributions obtained from Appsflyer. This information is present only when data is provided by Appsflyer and the user attribution is non-organic.
+
+      - name: media_source
+        description: >
+            Specifies the media source linked to non-organic user attributions retrieved from Appsflyer. This information is present only when data is provided by Appsflyer and the user attribution is non-organic.
+
+      - name: campaign_id
+        description: >
+            Denotes the campaign ID associated with non-organic user attributions received from Appsflyer. This information is present only when data is provided by Appsflyer and the user attribution is non-organic.
+
+      - name: campaign_name
+        description: >
+            Represents the name of the campaign linked to non-organic user attributions obtained from Appsflyer. This information is present only when data is provided by Appsflyer and the user attribution is non-organic.
+
+      - name: af_adset_id
+        description: >
+            Indicates the ad set ID associated with non-organic user attributions received from Appsflyer. This information is present only when data is provided by Appsflyer and the user attribution is non-organic.
+
+      - name: install_time
+        description: >
+            Records the timestamp indicating the installation time for both organic and non-organic installs obtained from Appsflyer. This field is populated for all user attributions, irrespective of whether they are organic or non-organic, provided data is available from Appsflyer.

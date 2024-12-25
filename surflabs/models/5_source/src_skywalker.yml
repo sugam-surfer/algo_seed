@@ -1,0 +1,346 @@
+version: 2
+
+sources:
+  - name: skywalker
+    database: surf
+    tags:
+      - skywalker
+    tables:
+      - name: game_play
+        description: Game plays for each game.
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+          - sdk
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              ID is the unque key for the game room table. This is unique for a match id and
+              user id.
+          - name: room_id
+            description: >
+              This is the id for the type of room the match took part in.
+          - name: app_id
+            description: >
+              App ID is a unique identifier of an application in Surf environment.
+          - name: user_id
+            description: >
+              Unique identifier for a user within the app.
+          - name: max_players
+            description: >
+              Max number of players available in the room.
+          - name: fee_cur
+            description: >
+              The currency for the fee of the match.
+          - name: fee_amt
+            description: >
+              The fee for the match.
+          - name: prize_cur
+            description: >
+              The currency for the prize of the match.
+          - name: prize_amt
+            description: >
+              The prize amount for the match.
+          - name: wager_brackets
+            description: >
+              The brackets for the wager amounts.
+          - name: prize_pool
+            description: >
+              The prize pool on offer.
+          - name: flags
+            description: >
+              The flag that shows the status of the match.
+              flags in game_play are:
+                1: canceled
+                2: finished
+                4: not started
+          - name: wager
+            description: >
+              The number of people involved in the wager.
+          - name: score
+            description: >
+              The score gained by each of the players in the match.
+          - name: pos
+            description: >
+              The final position for the match.
+          - name: ended_at
+            description: >
+              The time the match was ended at.
+          - name: created_at
+            description: >
+              The time the match was created at.
+          - name: updated_at
+            description: >
+              The time the match was updated at.
+          - name: match_id
+            description: >
+              The unique identifier for the match id. A match is the individual game where the
+              players wager.
+          - name: wallet_addr
+            description: >
+              The wallet address for each of the users.
+          - name: xp_multiplier
+            description: >
+              The xp multiplier for the user.
+
+      - name: game_room
+        description: The game rooms available wihin the different apps.
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+          - sdk
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              Unique identifier for the game room.
+          - name: app_id
+            description: >
+              ID of the app that the game room is in.
+          - name: name
+            description: >
+              Name of the game room.
+          - name: fee_cur
+            description: >
+              The currency used to enter the game room.
+          - name: fee_amt
+            description: >
+              The fee amount to enter a match in the game room.
+          - name: prize_cur
+            description: >
+              The currency of the prie pool from a match in the game room.
+          - name: prize_amt
+            description: >
+              The prize amount won in the game room.
+          - name: cur_icon
+            description: >
+              Icon for the currency.
+          - name: max_players
+            description: >
+              The maximum number of players that can join a match in the game room.
+          - name: banner_txt
+            description: >
+              The text on the banner of the game room.
+          - name: banner_help_txt
+            description: >
+              The help text used in the game room.
+          - name: wager_brackets
+            description: >
+              The brckets of the wagers in the game room.
+          - name: prize_pool
+            description: >
+              The prize pool distribution across final positions within the room.
+          - name: flags
+            description: >
+              TBD
+          - name: created_at
+            description: >
+              The timestamp that the game room was created.
+          - name: updated_at
+            description: >
+              The timestamp that the game room was last updated.
+          - name: xp_multiplier
+            description: >
+              The XP multiplier for the game room.
+      - name: trivia_match_player
+        description: Match related information for each player.
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+          - sdk
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              Unique identifier for the match & user combination.
+          - name: match_id
+            description: >
+              Unique identifier for the match.
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: app_id
+            description: >
+              Unique identifier for the app / game.
+          - name: rank
+            description: >
+              ELO rating.
+          - name: wager
+            description: >
+              Entry fee for the match.
+          - name: answers
+            description: >
+              Which answers the player chose and when.
+          - name: reward
+            description: >
+              Amount earned by the player.
+          - name: rank_change
+            description: >
+              Change in ELO rank for the player as a result of this match.
+          - name: score
+            description: >
+              Total score of the player in the game based on correctly answered questions.
+          - name: bonus
+            description: >
+              Time bonus.
+          - name: status
+            description: >
+              Status of the player & game (1/2/3/4-joined / in progress / finished / expired).
+          - name: last_question
+            description: >
+              Time of last question, for backend logic.
+          - name: jokers
+            description: >
+              1/2/3 is fifty fifty/answer twice/skip question..
+          - name: active_joker
+            description: >
+              For internal backend logic.
+          - name: created_at
+            description: >
+              Row creation time - start time of the matchmaking for each user.
+          - name: updated_at
+            description: >
+              The last time anything on this row has changed. This column is automatically updated by the database.
+          - name: position
+            description: >
+              Currently null.
+      - name: trivia_match
+        description: Match related information for each player.
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+          - sdk
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              Unique identifier for the match.
+          - name: creator_id
+            description: >
+              user_id of first user joined the room.
+          - name: creator_rank
+            description: >
+              The first user's ELO rank at the time of match creation.
+          - name: app_id
+            description: >
+              Unique identifier for the app / game.
+          - name: room_id
+            description: >
+              id in game_room table.
+          - name: questions
+            description: >
+              Question IDs, matching hansolo.trivia_questions.id, in order the users see them.
+          - name: status
+            description: >
+              Status of the game (1/2/3/4-open(joinable) / in progress / finished / canceled).
+          - name: created_at
+            description: >
+              Either when the match was created (for the first player) or when the player joined the match (for non-first players).
+          - name: updated_at
+            description: >
+              The last time anything on this row has changed. This column is automatically updated by the database.
+      - name: user_wallet
+        description: User_id & wallet address combinations for each app.
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+          - sdk
+        columns:
+          - name: id
+            description: >
+              Unique identifier for the app and user_id.
+          - name: app_id
+            description: >
+              Unique identifier for the app / game.
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: wallet_addr
+            description: >
+              Wallet address the user last logged in with.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+      - name: user_token_escrow
+        description: Laguna withdrawals
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+        columns:
+          - name: id
+            description: >
+              Unique identifier for the transaction.
+          - name: app_id
+            description: >
+              Unique identifier for the app / game.
+          - name: wallet_addr
+            description: >
+              Wallet address the user sent the withdrawal request.
+          - name: amount
+            description: >
+              Amount of the withdrawal request.
+          - name: deadline
+            description: >
+              Time the request will cancel.
+          - name: request_id
+            description: >
+              The unique id of the withdrawal request.
+          - name: chain
+            description: >
+              The chain of the withdrawal request.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+          - name: status
+            description: >
+              0/1/2/3 pending/completed/expired/cancelled.
+          - name: actor
+            description: >
+              The wallet address of the person doing the review.
+
+      - name: trivia_player_seen
+        description: Questions seen by the player in a match.
+        meta:
+          surf_services:
+            - skywalker
+        tags:
+          - skywalker
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              id of batch of questions seen by a user in a game.
+          - name: app_id
+            description: >
+              Unique identifier for the app / game.
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: seen
+            description: >
+              Questions seen by user in the game.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.

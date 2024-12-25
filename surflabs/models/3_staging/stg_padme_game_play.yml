@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: stg_padme_game_play
+    description: '{{ doc("stg_padme_game_play") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each gameplay entry.
+
+      - name: room_id
+        description: >
+            Identifier for the room in which the gameplay occurred.
+
+      - name: room_type
+        description: >
+             Type of room, indicated by the following values:
+              1: GameRoomInstanced (A match that starts, is played, and ends with a set result)
+              2: GameRoomInstancedAsync (Similar to Instanced, but players play at separate times without consensus check)
+              3: GameRoomPersistent (A match that is always open, allowing players to freely join and leave)
+
+      - name: app_id
+        description: >
+            The unique identifier of the app.
+
+      - name: user_id
+        description: >
+            The unique identifier of the user.
+
+      - name: prize_pool
+        description: >
+            Describes the reward structure for the gameplay in JSON format, including the currency type and the distribution of rewards.
+
+      - name: max_players
+        description: >
+            The number of players in the match.
+
+      - name: xp_multiplier
+        description: >
+            Multiplier value for experience points earned during the gameplay.
+
+      - name: flags
+        description: >
+            Indicates the status of the gameplay through bitwise representation:
+            1: Started
+            2: Canceled
+            4: Pending
+            8: Finished
+            16: Expired
+
+      - name: won
+        description: >
+            1 if rewards are obtained during the gameplay, 0 otherwise.
+
+      - name: score
+        description: >
+            The score achieved during the gameplay.
+
+      - name: position
+        description: >
+            Position attained by the user in the gameplay. Starts at 0 (zero).
+
+      - name: house_cut
+        description: >
+            The amount taken by the house from the gameplay. If a house cut is taken from the match, the amount is written to the player finishing first.
+
+      - name: claimed
+        description: >
+            Indicator of whether any rewards or winnings from the gameplay have been claimed.
+
+      - name: ended_at
+        description: >
+            Timestamp indicating when the gameplay session ended.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the gameplay entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the gameplay entry was last updated.
+
+      - name: match_id
+        description: >
+            Identifier for the match associated with the gameplay.
+
+      - name: entry_fee_amount
+        description: >
+            Amount of entry fee required for participation in the gameplay. It could be partial of the total entry, broken down into all currencies paid.
+
+      - name: entry_fee_cur
+        description: >
+            Currency type for the entry fee.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the gameplay entry was inserted into the database.

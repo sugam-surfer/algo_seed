@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: jdi_wa_approved_withdrawals_today
+    description: >
+        List of withdrawals approved and/or processed within the current date.
+
+    columns:
+      - name: id
+        description: >
+            Unique id of the transaction.
+
+      - name: app_id
+        description: >
+            Unique id of the app.
+
+      - name: currency
+        description: >
+            Currency of the transaction.
+
+      - name: amount
+        description: >
+            Amount of the transaction in the original currency.
+
+      - name: ex_value
+        description: >
+            Amount of the transaction in USD.

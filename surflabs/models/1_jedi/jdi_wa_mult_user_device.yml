@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: jdi_wa_mult_user_device
+    description: '{{ doc("jdi_wa_mult_user_device") }}'
+
+    columns:
+      - name: app_id
+        description: >
+            Unique id of the app.
+
+      - name: user_id
+        description: >
+            Unique id of the user.
+
+      - name: num_other_user_ids
+        description: >
+            The number of unique other users sharing the same device with the user who have also completed normal hard currency games.

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: raw_apps
+    description: '{{ doc("raw_apps") }}'
+
+    columns:
+      - name: app_id
+        description: >
+            Unique identifier for each app.
+
+      - name: app_name
+        description: >
+            Name of the app.
+
+      - name: app_description
+        description: >
+            Description of the app.
+
+      - name: company_id
+        description: >
+            Identifier of the company associated with the app.
+
+      - name: app_ios_id
+        description: >
+            iOS identifier of the app.
+
+      - name: app_android_id
+        description: >
+            Android identifier of the app.
+
+      - name: app_sdk_api_key
+        description: >
+            API key associated with the app's SDK.
+
+      - name: app_created_at
+        description: >
+            Timestamp indicating when the app entry was created.
+
+      - name: app_updated_at
+        description: >
+            Timestamp indicating when the app entry was last updated.
+
+      - name: flags
+        description: >
+            A bitmask column representing app properties. Key values are 16 (unicorn), 32 (trivia), and 64 (grapes). To check if a property is enabled, use BITAND(flags, 16) != 0 for unicorn, BITAND(flags, 32) != 0 for trivia, and BITAND(flags, 64) != 0 for grapes.

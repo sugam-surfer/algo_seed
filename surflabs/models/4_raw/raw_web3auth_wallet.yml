@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: raw_web3auth_wallet
+    description: '{{ doc("raw_web3auth_wallet") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each wallet entry.
+
+      - name: ident_type
+        description: >
+            Chain the wallet was created on.
+
+      - name: ident_value
+        description: >
+            Wallet address.
+
+      - name: init
+        description: >
+            A value of 1 indicates the wallet had its first top-up, while 0 signifies otherwise.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the wallet entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the wallet entry was last updated.
+
+      - name: last_topup
+        description: >
+            Timestamp indicating the most recent top-up of the wallet to cover gas fees.
+
+      - name: last_check
+        description: >
+            Timestamp indicating the last time when the wallet's gas fee sufficiency was checked.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the wallet entry was inserted into the database.
+            

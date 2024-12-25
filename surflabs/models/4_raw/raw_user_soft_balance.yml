@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_user_soft_balance
+    description: '{{ doc("raw_user_soft_balance") }}'
+
+    columns:
+      - name: user_id
+        description: >
+            Unique identifier of the user.
+
+      - name: app_id
+        description: >
+            Unique identifier of the app.
+
+      - name: balance
+        description: >
+            Current soft currency balance amount for the specified user.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the soft currency balance entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the soft currency balance entry was last updated.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the soft currency balance entry was inserted into the database.

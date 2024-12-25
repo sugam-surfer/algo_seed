@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: raw_user_hard_balance
+    description: '{{ doc("raw_user_hard_balance") }}'
+
+    columns:
+      - name: user_id
+        description: >
+            Unique identifier of the user.
+
+      - name: currency
+        description: >
+            Currency type associated with the balance. If the currency starts with "B", it represents the game balance. Currencies without the "B" prefix represent the winning balance.
+
+      - name: balance
+        description: >
+            Current balance amount for the specified currency.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the balance entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the balance entry was last updated.
+
+      - name: app_id
+        description: >
+            Unique identifier of the app.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the balance entry was inserted into the database.

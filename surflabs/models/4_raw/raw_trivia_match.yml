@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: raw_trivia_match
+    description: '{{ doc("raw_trivia_match") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique identifier for each trivia match entry, match id.
+
+      - name: creator_id
+        description: >
+            user_id of the first user who joined the room.
+
+      - name: creator_rank
+        description: >
+            The first user's ELO rank at the time of match creation.
+
+      - name: app_id
+        description: >
+            Identifier for the app related to the trivia match.
+
+      - name: room_id
+        description: >
+            Identifier for the game room associated with the trivia match. Can be matched with game_room table.
+
+      - name: questions
+        description: >
+            Questions included in the trivia match. Doesn't mean all players have seen all the questions.
+
+      - name: status
+        description: >
+            Status of the game, indicating its current state:
+              1: Open (joinable)
+              2: In progress
+              3: Finished
+              4: Canceled
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the trivia match entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the trivia match entry was last updated.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the trivia match entry was inserted into the database.

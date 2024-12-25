@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_user_app_data
+    description: '{{ doc("stg_user_app_data") }}'
+
+    columns:
+      - name: user_id
+        description: >
+            Unique identifier of the user.
+
+      - name: app_id
+        description: >
+            The unique identifier of the app.
+
+      - name: created_at
+        description: >
+            Timestamp indicating when the user application data entry was created.
+
+      - name: updated_at
+        description: >
+            Timestamp indicating when the user application data entry was last updated.
+
+      - name: user_name
+        description: >
+            The chosen username or display name of the user within the system.
+
+      - name: profile_picture
+        description: >
+            Representation of the user's profile image or avatar, either as an identifier or a link to an NFT.
+
+      - name: data
+        description: >
+            JSON blob containing various user-related information, such as pending matches, FTUE progress, tutorial completion status, and other personalized details.
+
+      - name: inserted_at
+        description: >
+            Timestamp indicating when the user application data entry was inserted into the database.

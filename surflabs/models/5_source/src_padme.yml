@@ -1,0 +1,447 @@
+version: 2
+
+sources:
+  - name: padme
+    database: surf
+    tags:
+      - padme
+    tables:
+      - name: game_play
+        description: Game plays for each game. Currently Trivia only.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+          - sdk
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              ID is the unque key for the game room table. This is unique for a match id and
+              user id.
+          - name: room_id
+            description: >
+              This is the id for the type of room the match took part in.
+          - name: room_type
+            description: >
+              1: A match that starts, is played, and ends with a set result
+              2: Like Instanced, but players play at separate times and we don't check for consensus
+              3: A match that is always open, where players are free to join and leave
+              It is always 2 for Trivia
+          - name: app_id
+            description: >
+              App ID is a unique identifier of an application in Surf environment.
+          - name: user_id
+            description: >
+              Unique identifier for a user within the app.
+          - name: entry_fee
+            description: >
+              The amount and currency of the entry fee to join the match.
+          - name: prize_pool
+            description: >
+              The rewards and currency of the prize pool of the match.
+          - name: max_players
+            description: >
+              Max number of players available in the room.
+          - name: xp_multiplier
+            description: >
+              The xp multiplier for the user.
+          - name: flags
+            description: >
+              The flag that shows the status of the player's match.
+              flags in game_play are:
+                1: started
+                2: canceled
+                4: pending (player finished playing but the result is not finalized yet)
+                8: finished
+                16: expired
+                32: reward claimed
+          - name: won
+            description: >
+              1 if the player won a reward, 0 otherwise.
+          - name: score
+            description: >
+              The score gained by each of the players in the match. Includes time bonus.
+          - name: position
+            description: >
+              The final position for the match.
+          - name: house_cut
+            description: >
+              The total house cut we earned in match, written to the row of the player finishing first.
+          - name: match_id
+            description: >
+              The unique identifier for the match id. A match is the individual game where the
+              players wager.
+          - name: extra
+            description: >
+              Ignore.
+          - name: validated
+            description: >
+              Ignore for Trivia.
+          - name: claimed
+            description: >
+              If the player manually claimed their reward then 1, otherwise 0.
+          - name: ended_at
+            description: >
+              The time the player finished the match.
+          - name: created_at
+            description: >
+              The time the match was created at.
+          - name: updated_at
+            description: >
+              The time the match was updated at.
+      - name: game_room
+        description: The game rooms available wihin the different apps.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+          - sdk
+          - off_chain
+        columns:
+          - name: id
+            description: >
+              Unique identifier for the game room.
+          - name: app_id
+            description: >
+              ID of the app that the game room is in.
+          - name: typ
+            description: >
+              1: A match that starts, is played, and ends with a set result
+              2: Like Instanced, but players play at separate times and we don't check for consensus
+              3: A match that is always open, where players are free to join and leave
+              It is always 2 for Trivia
+          - name: name
+            description: >
+              Name of the game room.
+          - name: entry_fee
+            description: >
+              The currency and amount paid to enter the game room.
+          - name: prize_pool
+            description: >
+              The currency and amounts of the prize pool from a match in the game room.
+          - name: max_players
+            description: >
+              The maximum number of players that can join a match in the game room.
+          - name: xp_multiplier
+            description: >
+              The XP multiplier for the game room.
+          - name: flags
+            description: >
+              1 if the room is deleted.
+          - name: order
+            description: >
+              The order of the rooms being displayed in the game.
+          - name: created_at
+            description: >
+              The timestamp that the game room was created.
+          - name: updated_at
+            description: >
+              The timestamp that the game room was last updated.
+
+      - name: user_ident
+        description: User id and wallet lookup table.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+          - sdk
+        columns:
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: ident_type
+            description: >
+              Whether the user logged in via social or wallet.
+          - name: ident_value
+            description: >
+              The wallet address depending on the ident_type.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+
+      - name: user_app_data
+        description: In-game data of the user such as user name and tutorial participation.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+          - sdk
+        columns:
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: app_id
+            description: >
+              ID of the app that the game room is in.
+          - name: data
+            description: >
+              Data of the user such as user name and tutorial participation.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+
+      - name: user_balance_log
+        description: Log of user transactions with currencies.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: id
+            description: >
+              Unique identifier of the transaction.
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: app_id
+            description: >
+              ID of the app.
+          - name: currency
+            description: >
+              Currency transacted.
+          - name: change
+            description: >
+              Value of transaction.
+          - name: reason
+            description: >
+              Type of transaction.
+          - name: txn_id
+            description: >
+              Txn id.
+          - name: created_at
+            description: >
+              Row creation time.
+
+      - name: user
+        description: Log of user creation, last login, company.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: id
+            description: >
+              Unique identifier of the user.
+          - name: company_id
+            description: >
+              Unique identifier of the company for the user.
+          - name: pass
+            description: >
+              Password of the user. Ignore.
+          - name: nick
+            description: >
+              Nickname of the user. Ignore.
+          - name: last_login
+            description: >
+              Last time the user logged in.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row last update time.
+
+      - name: exchange_rate
+        description: USD to XTZ and RBW exchange rates scraped every 10 minutes.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: id
+            description: >
+              Unique identifier of the row.
+          - name: base
+            description: >
+              Base currency, which is USD.
+          - name: target
+            description: >
+              Target currency.
+          - name: rate_open
+            description: >
+              Price at the start of the trading session.
+          - name: rate_high
+            description: >
+              Highest price during the trade session.
+          - name: rate_low
+            description: >
+              Lowest price during the trade session.
+          - name: rate_close
+            description: >
+              Price at the end of the trading session.
+          - name: ts_start
+            description: >
+              Start time of the trading session.
+          - name: ts_end
+            description: >
+              End time of the trading session. Currently null.
+          - name: scraped_at
+            description: >
+              Time of scrape.
+          - name: created_at
+            description: >
+              Row creation time.
+
+      - name: user_app
+        description: The app the user id belongs to as well as the user's hard currency in the app.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: user_id
+            description: >
+              Unique identifier of the user.
+          - name: app_id
+            description: >
+              Unique identifier of the app.
+          - name: hard_currency
+            description: >
+              Hard currency of the user.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+
+      - name: user_hard_balance
+        description: Current hard currency user balances in real and bonus currencies.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: user_id
+            description: >
+              Unique identifier of the user.
+          - name: currency
+            description: >
+              The hard currency of the balance, real and bonus.
+          - name: balance
+            description: >
+              The balance of the user in the currency at the time of last update.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+          - name: app_id
+            description: >
+              Unique identifier of the app.
+
+      - name: user_reward
+        description: Rewards given to user.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: id
+            description: >
+              Unique identifier of the reward.
+          - name: app_id
+            description: >
+              Unique identifier of the app.
+          - name: user_id
+            description: >
+              Unique identifier of the user.
+          - name: reward
+            description: >
+              The amount of the daily reward.
+          - name: currency
+            description: >
+              The currency of the daily reward.
+          - name: type
+            description: >
+              1: Play, 2: LevelUp, 3: Daily, 4: Leaderboard
+          - name: claimed
+            description: >
+              0: given but not claimed (logged in), 1: claimed
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+      
+      - name: user_soft_balance
+        description: Current soft currency user balance.
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: user_id
+            description: >
+              Unique identifier of the user.
+          - name: app_id
+            description: >
+              Unique identifier of the app.
+          - name: balance
+            description: >
+              The soft currency balance of the user at the time of last update.
+          - name: created_at
+            description: >
+              Row creation time.
+          - name: updated_at
+            description: >
+              Row update time.
+
+      - name: user_balance_log_new
+        description: Log of user transactions with currencies and current and previous balances
+        meta:
+          surf_services:
+            - padme
+        tags:
+          - padme
+        columns:
+          - name: id
+            description: >
+              Unique identifier of the transaction.
+          - name: user_id
+            description: >
+              Unique identifier for the user.
+          - name: app_id
+            description: >
+              ID of the app.
+          - name: currency
+            description: >
+              Currency transacted.
+          - name: prev
+            description: >
+              Balance at the start of the transaction.
+          - name: next
+            description: >
+              Balance after the current transaction.
+          - name: change
+            description: >
+              Value of transaction.
+          - name: reason
+            description: >
+              Type of transaction.
+          - name: txn_id
+            description: >
+              Txn id.
+          - name: created_at
+            description: >
+              Row creation time.

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: jdi_wa_depositors
+    description: '{{ doc("jdi_wa_depositors") }}'
+    columns:
+
+      - name: app_id
+        description: >
+            Unique id of the app.
+
+      - name: ident_value
+        description: >
+            Wallet identifier of the transaction user.
+
+      - name: deposits_ex_value
+        description: >
+            Total nominal value of successful deposits of the user.
+
+      - name: withdrawals_ex_value
+        description: >
+            Total nominal value of successful withdrawals of the user.
+
+      - name: deposit_per_withdrawal
+        description: >
+            deposits_ex_value / withdrawals_ex_value

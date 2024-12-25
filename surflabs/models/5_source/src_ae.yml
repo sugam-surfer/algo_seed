@@ -1,0 +1,39 @@
+version: 2
+
+sources:
+  - name: ae
+    database: surf
+    tags:
+      - ae
+    tables:
+      - name: events
+        description: Events fired by IA SDK
+        meta:
+          surf_services:
+            - skywalker
+            - calrissian
+        tags:
+          - skywalker
+          - calrissian
+          - sdk
+          - off_chain
+        columns:
+          - name: app_id
+            description: >
+              App ID is a unique identifier of an application in Surf environment.
+              It will be auto generated when a new application is created.
+          - name: ts
+            description: >
+              Represents when the event happened. This is in date-time
+              (`YYYY-MM-DD HH24:MI:SS.FF3`) format.
+          - name: data
+            description: >
+              Data json object collected from the [Skywalker](https://github.com/teamsurf/skywalker)
+              service.
+          - name: _tsdate
+            description: >
+              Represents when the event was received. This is in date (`YYYY-MM-DD`) format.
+          - name: _ts
+            description: >
+              Represents when the event was received. This is in date-time
+              (`YYYY-MM-DD HH24:MI:SS.FF3`) format.

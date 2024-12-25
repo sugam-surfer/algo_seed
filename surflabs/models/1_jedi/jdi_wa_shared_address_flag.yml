@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: jdi_wa_shared_address_flag
+    description: '{{ doc("jdi_wa_shared_address_flag") }}'
+
+    columns:
+      - name: nominated_address
+        description: >
+            The wallet address nominated for withdrawals by the user.
+
+      - name: app_id
+        description: >
+            Unique identifier of the app.
+
+      - name: ident_value
+        description: >
+            The wallet address created when the user logs in via Web3Auth, used to uniquely identify the user.

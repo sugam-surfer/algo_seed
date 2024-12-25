@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_web3auth_wallets
+    description: >
+        Web3auth wallets created and funded daily.
+
+    columns:
+      - name: report_date
+        description: >
+            Date the wallet was created.
+
+      - name: ident_type
+        description: >
+            Chain.
+
+      - name: new_wallets
+        description: >
+            Number of wallets created.
+
+      - name: funded_wallets
+        description: >
+            Number of wallets funded.

@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: jdi_wa_prev_withdrawers
+    description: '{{ doc("jdi_wa_prev_withdrawers") }}'
+
+    columns:
+      - name: user_id
+        description: >
+            Unique id of the user.
+
+      - name: inserted_at
+        description: >
+            The row creation time of the approved withdrawal of the user.

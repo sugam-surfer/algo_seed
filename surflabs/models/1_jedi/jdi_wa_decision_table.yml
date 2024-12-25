@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: jdi_wa_decision_table
+    description: '{{ doc("jdi_wa_decision_table") }}'
+    columns:
+
+      - name: id
+        description: >
+            The unique identifier for the withdrawal request.
+
+      - name: app_id
+        description: >
+            The unique identifier for the app.
+
+      - name: ident_value
+        description: >
+            The unique identifier for the user (wallet address created when the user logs in via Web3Auth).
+
+      - name: user_id
+        description: >
+            The unique identifier for the user.
+
+      - name: nominated_address
+        description: >
+            The wallet address nominated for withdrawals by the user.
+
+      - name: created_at
+        description: >
+            The timestamp when the withdrawal request was created.
+
+      - name: currency
+        description: >
+            The currency of the withdrawal request.
+
+      - name: amount
+        description: >
+            The amount of the withdrawal request.
+
+      - name: ex_value
+        description: >
+            The USD value of the withdrawal request.
+
+      - name: working_hours_since_request
+        description: >
+            The number of working hours since the withdrawal request was created.
+
+      - name: is_depositor
+        description: >
+            Indicates if the user has made any deposits.
+
+      - name: prev_withdrawer
+        description: >
+            Indicates if the user has previously made any withdrawals.
+
+      - name: deposits_ex_value
+        description: >
+            The total USD value of successful deposits made by the user.
+
+      - name: withdrawals_ex_value
+        description: >
+            The total USD value of successful withdrawals made by the user.
+
+      - name: deposit_withdrawal_ratio
+        description: >
+            The ratio of the total USD value of deposits to the total USD value of withdrawals for the user.
+
+      - name: total_games
+        description: >
+            The total number of normal hard currency games played by the user.
+
+      - name: games_per_day
+        description: >
+            The average number of games played per day by the user.
+
+      - name: win_rate
+        description: >
+            The win rate of the user associated with the withdrawal request.
+
+      - name: ci_low
+        description: >
+            The lower bound of the confidence interval for the user's win rate.
+
+      - name: ci_high
+        description: >
+            The upper bound of the confidence interval for the user's win rate.
+
+      - name: num_other_users
+        description: >
+            The number of unique other users sharing the same device with the user, having played normal hard currency games.
+
+      - name: shared_address
+        description: >
+            Indicates if the nominated address is shared with other users.
+
+      - name: abn_matches
+        description: >
+            The number of matches with abnormal score differences for the user.
+
+      - name: abnormal_score_diff
+        description: >
+            Indicates if the user has abnormal score differences for more than the threshold in their gameplay.
+
+      - name: status
+        description: >
+            The approval status of the withdrawal request (approve, reject, review, confiscate, or hold).
+
+      - name: prio_score
+        description: >
+            The priority score assigned to the withdrawal request.
+
+      - name: reason
+        description: >
+            The reason for the approval status of the withdrawal request.
+
+      - name: approval_ranking
+        description: >
+            The approval ranking of the withdrawal request based on its priority score for a certain app.

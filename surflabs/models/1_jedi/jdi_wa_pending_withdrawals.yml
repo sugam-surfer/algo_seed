@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: jdi_wa_pending_withdrawals
+    description: '{{ doc("jdi_wa_pending_withdrawals") }}'
+
+    columns:
+      - name: id
+        description: >
+            Unique id of the transaction.
+
+      - name: app_id
+        description: >
+            Unique id of the app.
+
+      - name: created_at
+        description: >
+            Time the request was created.
+
+      - name: currency
+        description: >
+            Currency of the transaction.
+
+      - name: amount
+        description: >
+            Amount of the transaction in the original currency.
+
+      - name: ex_value
+        description: >
+            Amount of the transaction in USD.
